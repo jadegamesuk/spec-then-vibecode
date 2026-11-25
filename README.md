@@ -1,8 +1,13 @@
 # Spec Then Vibecode
 
-A specification-driven workflow for AI-assisted software development.
+![License](https://img.shields.io/github/license/jadegamesuk/spec-then-vibecode)
+![Status](https://img.shields.io/badge/status-active-success)
+![Methodology](https://img.shields.io/badge/development-spec--driven-blue)
+![AI](https://img.shields.io/badge/AI-agentic%20workflow-purple)
 
-Instead of asking an LLM to build software from a vague idea, define exactly what should be built first. The workflow uses auditing, planning, implementation and compliance stages to ensure generated code matches the specification and nothing more.
+Build software by writing the specification first and generating code second.
+
+Spec Then Vibecode is a specification-driven workflow that treats AI as an implementation tool rather than a product designer. The goal is to reduce hallucinations, prevent scope creep, and ensure generated code matches documented requirements.
 
 ## Workflow
 
@@ -24,28 +29,14 @@ tester
 compliance-auditor
 ```
 
-## Goals
+## Core Principles
 
-- Reduce AI hallucinations
-- Prevent undocumented features
-- Avoid unwanted architectural decisions
-- Catch specification gaps before implementation
-- Ensure generated code matches requirements
-
-## Repository Structure
-
-```text
-skills/
-├── scope-audit.md
-├── spec-audit.md
-├── task-planner.md
-├── test-spec-generator.md
-└── compliance-auditor.md
-
-agents/
-├── coding.md
-└── tester.md
-```
+- Specification before implementation
+- Requirements before code
+- Tests before validation
+- No undocumented functionality
+- No AI product decisions
+- No inferred requirements
 
 ## Specification Format
 
@@ -67,61 +58,67 @@ Acceptance Criteria
 Required External Dependencies
 ```
 
+## Repository Structure
+
+```text
+skills/
+├── scope-audit.md
+├── spec-audit.md
+├── task-planner.md
+├── test-spec-generator.md
+└── compliance-auditor.md
+
+agents/
+├── coding.md
+└── tester.md
+```
+
 ## Process
 
-### 1. Scope Audit
+### Scope Audit
 
 Validates that the proposed solution is appropriately scoped and capable of achieving the stated goal.
 
-### 2. Specification Audit
+### Specification Audit
 
-Validates that the specification can be implemented exactly as written without assumptions.
+Validates that the specification can be implemented exactly as written and identifies ambiguities, contradictions, missing requirements, and undefined behaviour.
 
-### 3. Task Planning
+### Task Planning
 
 Converts the approved specification into implementation tasks.
 
-### 4. Test Specification Generation
+### Test Specification Generation
 
-Creates tests derived from requirements and acceptance criteria rather than generated code.
+Creates tests derived from requirements and acceptance criteria.
 
-### 5. Coding
+### Coding
 
-Implements the specification.
+Implements the approved specification.
 
-Rules:
+If a requirement is unclear:
 
-- Do not infer requirements
-- Do not add features
-- Do not substitute technologies
-- Stop and request clarification if information is missing
+```text
+Specification clarification required.
+```
 
-### 6. Testing
+### Testing
 
-Validates implementation against the generated test specification.
+Executes tests generated from the approved test specification.
 
-### 7. Compliance Audit
+### Compliance Audit
 
 Verifies:
 
-- All requirements implemented
-- All acceptance criteria implemented
-- All tests exist and pass
+- Every requirement implemented
+- Every acceptance criterion implemented
+- Every test exists and passes
 - No undocumented functionality exists
 - No specified functionality is missing
 
-## Design Principles
-
-- Specification before implementation
-- Requirements before code
-- Tests before validation
-- No AI product decisions
-- No undocumented functionality
-
 ## Limitations
 
-This workflow can only evaluate information explicitly written in the specification. Missing or incorrect requirements in `spec.md` will lead to missing or incorrect behaviour in the final application.
+This workflow can only validate information explicitly written in the specification. Missing or incorrect requirements in `spec.md` will result in missing or incorrect behaviour in the final application.
 
 ## Detailed Documentation
 
-See the individual files under `skills/` and `agents/` for the complete prompts and behaviour definitions.
+See the individual files under `skills/` and `agents/` for complete prompts and behaviour definitions.
