@@ -4,11 +4,11 @@ Follow each step in order. Do not proceed until the current step has been comple
 
 ---
 
-## Project Setup
+# Project Setup
 
-### Step 1 - Create a specification
+## Step 1 - Create Specification
 
-Create a file called:
+Create:
 
 ```text
 spec.md
@@ -32,84 +32,96 @@ Acceptance Criteria
 Required External Dependencies
 ```
 
-Checkbox:
-
-- [ ] `spec.md` created and completed
+- [ ] `spec.md` completed
 
 ---
 
-## Scope Validation
+# Scope Validation
 
-### Step 2 - Run Scope Audit
+## Step 2 - Run Scope Audit
 
-Using a read-only AI agent, run:
+Open a read-only AI agent.
 
-```text
-Validate spec.md using skills/scope-audit.md
-```
-
-Review the output.
-
-If the result is:
+Copy and paste:
 
 ```text
-FAIL
+Read spec.md.
+
+Use the instructions in skills/scope-audit.md.
+
+Audit the specification.
+
+Do not modify spec.md.
+Do not infer requirements.
+Do not make product decisions.
+
+Return the output exactly as defined in scope-audit.md.
 ```
 
-Update `spec.md` and rerun the audit.
-
-Repeat until:
+If the result is FAIL:
 
 ```text
-PASS
+Update spec.md
+Run Step 2 again
 ```
 
-Checkbox:
+Repeat until PASS.
 
 - [ ] `scope-audit` passed
 
 ---
 
-## Specification Validation
+# Specification Validation
 
-### Step 3 - Run Specification Audit
+## Step 3 - Run Spec Audit
 
-Using a read-only AI agent, run:
+Open a read-only AI agent.
 
-```text
-Validate spec.md using skills/spec-audit.md
-```
-
-Review the output.
-
-If the result is:
+Copy and paste:
 
 ```text
-FAIL
+Read spec.md.
+
+Use the instructions in skills/spec-audit.md.
+
+Audit the specification.
+
+Do not modify spec.md.
+Do not infer requirements.
+Do not make implementation decisions.
+
+Return the output exactly as defined in spec-audit.md.
 ```
 
-Update `spec.md` and rerun the audit.
-
-Repeat until:
+If the result is FAIL:
 
 ```text
-PASS
+Update spec.md
+Run Step 3 again
 ```
 
-Checkbox:
+Repeat until PASS.
 
 - [ ] `spec-audit` passed
 
 ---
 
-## Task Generation
+# Task Generation
 
-### Step 4 - Generate Tasks
+## Step 4 - Generate Tasks
 
-Using an AI agent, run:
+Open an AI agent.
+
+Copy and paste:
 
 ```text
-Read spec.md and generate tasks.md using skills/task-planner.md
+Read spec.md.
+
+Use the instructions in skills/task-planner.md.
+
+Generate tasks.md.
+
+Write all implementation tasks required to deliver the specification.
 ```
 
 Expected output:
@@ -118,20 +130,27 @@ Expected output:
 tasks.md
 ```
 
-Checkbox:
-
 - [ ] `tasks.md` generated
 
 ---
 
-## Test Generation
+# Test Specification Generation
 
-### Step 5 - Generate Test Specification
+## Step 5 - Generate Test Specifications
 
-Using an AI agent, run:
+Open an AI agent.
+
+Copy and paste:
 
 ```text
-Read spec.md and tasks.md and generate test-spec.md using skills/test-spec-generator.md
+Read:
+
+- spec.md
+- tasks.md
+
+Use the instructions in skills/test-spec-generator.md.
+
+Generate test-spec.md.
 ```
 
 Expected output:
@@ -140,17 +159,17 @@ Expected output:
 test-spec.md
 ```
 
-Checkbox:
-
 - [ ] `test-spec.md` generated
 
 ---
 
-## Implementation
+# Implementation
 
-### Step 6 - Generate Code
+## Step 6 - Generate Code
 
-Using an AI coding agent, run:
+Open an AI coding agent.
+
+Copy and paste:
 
 ```text
 Read:
@@ -159,46 +178,46 @@ Read:
 - tasks.md
 - test-spec.md
 
-Use agent/coding.md to implement the project.
-```
+Use the instructions in agent/coding.md.
 
-If the coding agent responds:
+Implement all tasks.
 
-```text
+Do not infer requirements.
+Do not add functionality.
+Do not substitute technologies.
+
+If implementation cannot continue, stop immediately and return:
+
 Specification clarification required.
-```
-
-Update `spec.md` and return to:
-
-```text
-Step 2
 ```
 
 Expected output:
 
 ```text
-Completed application
+Working application
 ```
-
-Checkbox:
 
 - [ ] Application implemented
 
 ---
 
-## Testing
+# Testing
 
-### Step 7 - Test Implementation
+## Step 7 - Run Tests
 
-Using an AI testing agent, run:
+Open an AI testing agent.
+
+Copy and paste:
 
 ```text
 Read:
 
-- test-spec.md
 - generated source code
+- test-spec.md
 
-Use agent/tester.md to execute tests.
+Use the instructions in agent/tester.md.
+
+Execute all tests and return results.
 ```
 
 Expected output:
@@ -207,20 +226,26 @@ Expected output:
 PASS
 ```
 
-Checkbox:
+or
+
+```text
+FAIL
+```
 
 - [ ] Tests passed
 
 ---
 
-## Compliance Validation
+# Compliance Audit
 
-### Step 8 - Run Compliance Audit
+## Step 8 - Run Compliance Audit
 
-Using a read-only AI agent, run:
+Open a read-only AI agent.
+
+Copy and paste:
 
 ```text
-Compare:
+Read:
 
 - spec.md
 - tasks.md
@@ -228,7 +253,11 @@ Compare:
 - generated source code
 - test results
 
-Use skills/compliance-auditor.md
+Use the instructions in skills/compliance-auditor.md.
+
+Verify implementation matches the approved specification.
+
+Return the output exactly as defined in compliance-auditor.md.
 ```
 
 Expected output:
@@ -237,17 +266,15 @@ Expected output:
 PASS
 ```
 
-Checkbox:
-
 - [ ] Compliance audit passed
 
 ---
 
-## Handling Specification Changes
+# Handling Specification Changes
 
-If requirements change after coding has started:
+If requirements change after implementation has started:
 
-### Step 9 - Update Specification
+## Step 9 - Update Specification
 
 Update:
 
@@ -255,51 +282,86 @@ Update:
 spec.md
 ```
 
-Checkbox:
-
 - [ ] Specification updated
 
-### Step 10 - Re-run Validation
+---
+
+## Step 10 - Re-run Audits
 
 Run:
 
 ```text
-scope-audit
-spec-audit
+Read spec.md.
+
+Use skills/scope-audit.md.
 ```
 
-Checkbox:
+Then:
 
-- [ ] Validation rerun
+```text
+Read spec.md.
 
-### Step 11 - Regenerate Project Artifacts
+Use skills/spec-audit.md.
+```
+
+Both must PASS.
+
+- [ ] scope-audit passed
+- [ ] spec-audit passed
+
+---
+
+## Step 11 - Regenerate Project Artefacts
 
 Generate:
 
 ```text
 tasks.md
+```
+
+using:
+
+```text
+Use skills/task-planner.md.
+```
+
+Generate:
+
+```text
 test-spec.md
 ```
 
-Checkbox:
+using:
+
+```text
+Use skills/test-spec-generator.md.
+```
 
 - [ ] tasks.md regenerated
 - [ ] test-spec.md regenerated
 
-### Step 12 - Resume Implementation
+---
 
-Using the coding agent:
+## Step 12 - Resume Implementation
+
+Open the coding agent.
+
+Copy and paste:
 
 ```text
-Review all existing code for impact.
+Read:
 
-Continue implementation using:
 - spec.md
 - tasks.md
 - test-spec.md
-```
+- existing source code
 
-Checkbox:
+Review the impact of the specification change.
+
+Update implementation as required.
+
+Continue using agent/coding.md.
+```
 
 - [ ] Existing code reviewed
 - [ ] Implementation resumed
